@@ -32,110 +32,133 @@ library(cepespR)
 
 Uma vez carregado o pacote do CepespR, o usuário poderá fazer uso de 4 tipos de funções: `get_candidates`, `get_coalitions`, `get_votes` e `get_elections`. Cada função mostra ao usuário diferentes partes dos dados do TSE, retornando sempre ao final da consulta uma tabela com os detalhes das eleições. Veja abaixo o que cada função faz:
 
+### 2.1. Perfil dos candidatos (get_candidates)
 
-### 2.1. Consultar perfil dos candidatos (get_candidates)
+A função `get_candidates` retorna uma tabela com informações sobre características individuais dos candidatos. Com ela, é possível obter informações sobre __cor/raça__, __idade__, __gênero__, ou outra informação que diga respeito ao candidato. 
 
-Para obter detalhes a respeito das características individuais dos candidatos que concorreram em uma eleição específica, a função get_candidates é a indicada: A função funciona assim: base_de_dados<-get_candidates(year= "Ano escolhido", position = "cargo escolhido"). Como no exemplo abaixo:
+Para utilizá-la, você deve informar um __ano__ e uma __posição__. De modo geral, ela terá a seguinte estrutura:
 
-```{r}
-candpres_14 <- get_candidates(year=2014, position="Presidente")
+```{r, eval = FALSE}
+base_de_dados <- get_candidates(year = <Ano escolhido>, position = <cargo escolhido>).
 ```
 
-Para visualizar os dados do data frame criado usamos a função VIEW
+No exemplo abaixo, faremos uma consulta para os candidatos à __presidência__ durante as eleições de __2014__.
+
+```{r}
+candpres_14 <- get_candidates(year = 2014, position = "Presidente")
+```
+
+Para visualizar os dados da tabela criada, usamos a função `View`.
 
 ```{r}
 View(candpres_14)
 ```
 
-
-A ordem da função é sempre esta: nome do data frame onde você quer salvar estas informações + nome da função + variáveis de interesse. Também é possível realizar as consultas indicando os códigos dos cargos. Para visualizar quais códigos representam cada cargo, por favor, acesse: https://github.com/Cepesp-Fgv/cepesp-rest/blob/master/EleicoesPorCargo_BETA.md
-
-Vamos fazer uma consulta usando o código do cargo:
-
-Suponhamos que estamos interessados nas eleições para prefeito ocorridas em 2012. Neste caso, é preciso mudar apenas os valores dos parâmetros da função. Veja:
+Caso você queira, por exemplo, ver a distribuição de gênero entre todos os candidatos, podemos utilizar a função `table` da seguinte maneira:
 
 ```{r}
-candpref_12 <- get_candidates(year=2012, position=11)
+table(candpres_14$DESCRICAO_COR_RACA)
+
+table(candpres_14$DESCRICAO_SEXO)
 ```
 
-Você também poderia ter escrito "Prefeito" no lugar do código 11, que o resultado seria o mesmo. Note que apenas o ano e o nome(código) do cargo foram alterados
+Caso deseje, por exemplo, a média de uma variável quantitativa, podemos utilizar a função `summary`.
 
 ```{r}
+summary(candpres_14$IDADE_DATA_ELEICAO)
+```
+
+#### 2.1.1. Utilizando códigos ao invés de nomes
+
+Ao invés de escrever os nomes das posições desejadas, uma alternativa é fornecer o código do cargo. Essa solução pode se demonstrar mais rápida com o tempo, uma vez que escrever os nomes é relativamente mais demorado e, caso digitado errado, levará a um erro durante a execução da função.
+
+Os códigos também estão disponíveis na página do [GitHub](https://github.com/Cepesp-Fgv/cepesp-rest/blob/master/EleicoesPorCargo_BETA.md).
+
+Vamos ver um exemplo. Suponhamos que estamos interessados nas eleições para prefeito ocorridas em __2012__. O código do cargo para prefeito é __11__.  Sabendo disso, basta fornecer os valores desejados para a função e executá-la.
+
+```{r}
+candpref_12 <- get_candidates(year = 2012, position = 11)
+
 View(candpref_12)
 ```
 
-### 2.2. Consultar Coligações
+### 2.2. Coligações (get_coalitions)
 
-Para obter detalhes a respeito dos partidos que compuseram as coligacões em uma eleição específica, a função get_coalitions é a indicada:
+Caso o interesse seja pelas coligações realizadas por diferentes partidos, podemos utilizar a função `get_coalitions`.
 
-Ela funciona de forma similar a get_candidates:
+É importante ter em mente que o banco da dados sobre coligações fornecido pelo TSE apresenta diversas inconsistências. Por exemplo, estão presentes no banco tanto coligações que concorreram quanto aquelas que por algum motivo não puderam concorrer. Sabendo disso, indicamos que essas informações sejam utilizadas com cuidado. De modo geral, caso deseje obter informações sobre coligações, talvez seja mais interessante utilizar a função `get_elections`, como iremos demontrar mais para frente.
+
+O funcionamento de `get_coalitions` é similar ao de `get_candidates`. Basta fornecer uma __posição__ e um __ano__ para acessar as informações desejadas.
 
 ```{r}
-colpres_14 <- get_coalitions(year=2014, position="Presidente")
+colpres_14 <- get_coalitions(year = 2014, position = "Presidente")
 
 View(colpres_14)
 ```
 
-
-Suponhamos que agora estamos interessados nas coligações da eleição para presidente em 2002. Neste caso, a função será escrita assim:
+Suponhamos que agora estamos interessados nas coligações da eleição para __presidente__ em __2002__. Neste caso, a função será escrita assim:
 
 ```{r}
-colpres_02 <- get_coalitions(year=2002, position="Presidente")
+colpres_02 <- get_coalitions(year = 2002, position = "Presidente")
 
 View(colpres_02)
 ```
 
-### 2.3. Consultar votos por eleição
+### 2.3. Votos por eleição (get_votes)
 
-Para obter detalhes a respeito do número de votos de cada candidato em uma eleição específica, a função get_votos é a indicada:
+Para obter detalhes a respeito do número de votos de cada candidato em uma eleição específica, a função `get_votos` é a indicada. Diferente das funções anteriores, essa função precisa de uma __agregação regional__. Nesse sentido, você precisa definir o nível de agregação dos votos (municípios, estados, nacional, etc). Caso essa opção não seja definida, `get_votes` retornará por padrão os votos agregados por municípios. Os diferentes níveis de agregação disponíveis podem ser consultados em: https://github.com/Cepesp-Fgv/cepesp-r
+
+No exemplo abaixo, podemos ver uma requisição para os votos para __presidente__, em __2014__, com agregação regional configurada para __municípios__.
 
 ```{r}
-vtpres_14_mun <- get_votes(year=2014, position="Presidente", regional_aggregation="Municipio")
+vtpres_14_mun <- get_votes(year = 2014, position = "Presidente", regional_aggregation = "Municipio")
 
 View(vtpres_14_mun)
 ```
 
-
-Diferente das funções anteriores, essa função precisa de uma AGREGAÇÃO REGIONAL. Ou seja, você pode escolher a que nível de detalhe você quer ver os dados, se é por seção, municipio, nacional, etc. Os diferentes níveis de agregação disponíveis podem ser consultados em: https://github.com/Cepesp-Fgv/cepesp-r
-
 E se estivéssemos interessados em ver a agregação por Estado (unidade da federação)?
 
 ```{r}
-vtpres_14_estad <- get_votes(year=2014, position="Presidente", regional_aggregation="Estado")
+vtpres_14_estad <- get_votes(year = 2014, position = "Presidente", regional_aggregation = "Estado")
+
 View(vtpres_14_estad)
 ```
 
-### 2.4. Consultar resultado de eleições por cargo
+### 2.4. Resultado de eleições por cargo (get_elections)
 
-Além das consultas disponíveis no TSE, é possível fazer uma consulta integrada as eleições. Esta consulta agrega informações de candidato, coligações e votos. A consulta ainda está em fase BETA e podem haver pontos de melhoria. Para obter detalhes a respeito de uma eleição especificando-se o cargo, use a função get_elections:
+Além das consultas disponíveis no TSE, é possível fazer uma consulta integrada as eleições. Esta consulta agrega informações de candidato, coligações e votos. Trata-se de um dos diferenciais do CEPESPData frente a outras fontes. A consulta ainda está em fase __BETA__ e podem haver pontos de melhoria. Para obter detalhes a respeito de uma eleição especificando-se o cargo, use a função `get_elections`:
 
 ```{r}
-elpres_14 <- get_elections(year=2014, position="Presidente", regional_aggregation="Municipio", political_aggregation="Candidato")
+elpres_14 <- get_elections(year = 2014, position = "Presidente", regional_aggregation = "Municipio", political_aggregation = "Candidato")
 
 View(elpres_14)
 ```
 
-Esta função permite também consultar o resultado por diferentes agregações: 
+Esta função permite também consultar o resultado por diferentes agregações políticas: candidato, partido, coligação e consolidado da eleição. Cada uma delas agrega os votos e outras informações. Por exemplo, caso seja feita um requisição para agregação política __partido__, será retornado os votos obtidos e a coligação da qual o partido fez parte, além de outras informações.
 
-- Candidato.
-
-- Partido.
-
-- Coligação.
-
-- Consolidado.
-
-Em resultado consolidado da eleição você pode encontrar dados de comparecimento, votos válidos e votos brancos e nulos. Veja:
+A agregação política __consolidado da eleição__ possui informações um tanto quanto diferente das outras. Ela não retorna os votos de um candidato, partido ou coligação. Nela, você pode encontrar dados de __comparecimento__, __votos válidos__ e __votos brancos e nulos_._ Veja:
 
 ```{r}
-elpres_14_2 <- get_elections(year=2014, position="Presidente", regional_aggregation="Estado", political_aggregation="Consolidado")
+elpres_14_2 <- get_elections(year = 2014, position = "Presidente", regional_aggregation = "Estado", political_aggregation = "Consolidado")
 
 View(elpres_14_2)
 ```
 
-Caso você queira restringir sua busca, é possível filtrar na consulta valores específicos. Para limitar os resultados a valores específicos (um estado, um partido ou a um candidato, por exemplo), basta acrescentar os parâmetros STATE, PARTY ou CANDIDATE_NUMBER e alterá-los de acordo com o interesse.
+## 3. Filtrando resultados
 
-Para mostrar apenas os resultados do Rio Grande do Sul, por exemplo, acrescente o parâmetro STATE
+Por padrão as funções do `cepespR` retornam todas colunas disponíveis como também todos os partidos, candidatos e Estados. A fim de reduzir o tamanho da tabela, é possível selecionar valores específicos para essas consultas e, assim, obter resultados menores e mais fáceis de se trabalhar.
+
+### 3.1. Selecionando partidos, candidatos e Estados
+
+Para limitar os resultados a valores específicos (um estado, um partido ou a um candidato, por exemplo), basta acrescentar os parâmetros `state`, `party` ou `candidate_number` e alterá-los de acordo com o interesse.
+
+Variável           | Parâmetro       |
+-------------------|-----------------|
+Estado             | state           |
+Partido            | party           |
+Número do Candidato| candidate_number|
+
+Para mostrar apenas os resultados do Rio Grande do Sul (RS), por exemplo, acrescente o parâmetro `state`.
 
 ```{r}
 elpres_14_RS <- get_elections(year=2014, position="Presidente", regional_aggregation="Estado", political_aggregation="Partido", state="RS")
@@ -143,7 +166,7 @@ elpres_14_RS <- get_elections(year=2014, position="Presidente", regional_aggrega
 View(elpres_14_RS)
 ```
 
-Para mostrar apenas os resultados referentes ao PT, por exemplo, acrescente o parâmetro PARTY
+Para mostrar apenas os resultados referentes ao PT (13), por exemplo, acrescente o parâmetro `party`.
 
 ```{r}
 elpres_14_PT <- get_elections(year=2014, position="Presidente", regional_aggregation="Estado", political_aggregation="Partido", party="13")
@@ -151,7 +174,7 @@ elpres_14_PT <- get_elections(year=2014, position="Presidente", regional_aggrega
 View(elpres_14_PT)
 ```
 
-Para mostrar apenas os resultados referentes ao candidato 2511, por exemplo, acrescente o parâmetro CANDIDATE_NUMBER. Vamos escrever os parâmetros usando os códigos. Para o cargo de deputado federal o código é 6, para a agregação por UF. O código é 2 e para a agregação por candidato o código é 2
+Para mostrar apenas os resultados referentes ao candidato 2511, por exemplo, acrescente o parâmetro `candidate_number` Vamos escrever os parâmetros usando os códigos. Para o cargo de deputado federal o código é 6, para a agregação por UF. O código é 2 e para a agregação por candidato o código é 2
 
 ```{r}
 eldepfed_2511 <- get_elections(year=2014, position=6, regional_aggregation=2, political_aggregation=2, candidate_number=2511)
@@ -159,13 +182,15 @@ eldepfed_2511 <- get_elections(year=2014, position=6, regional_aggregation=2, po
 View(eldepfed_2511)
 ```
 
-## 4. Selecionando colunas
+### 3.2. Selecionando colunas
 
-As funções do CepespR retornam todas as colunas disponíveis, mas é possivel limitar o tamanho dos resultados selecionando apenas as colunas de interesse. Veja:
+Por padrão, as funções do CepespR retornam todas as colunas disponíveis, mas é possivel limitar o tamanho das tabelas para apenas a quantidade de variáveis desejadas.
 
-- PASSO 1: Primeiro visualizamos quais são as colunas padrões através da função NAMES. Veja:
+- PASSO 1: Primeiro visualizamos quais são as colunas padrões através da função `names`.
 
-Na função get_candidates,por exemplo, as colunas padrões são:
+Existem duas maneiras de realizar esse procedimento. Em primeiro lugar, você pode acessar a nossa página do [GitHub](https://github.com/Cepesp-Fgv/cepesp-rest) e selecionar a consulta desejada. Lá você poderá ver quais colunas são retornadas para cada requisição e escolher as pretendidas. Em segunda lugar, é possível realizar esse procedimento dentro do `R`, mediante a função `names`.
+
+Na função `get_candidates`, por exemplo, as colunas padrões são:
 
 ```{r}
 names(get_candidates(year = 2014, position = "Presidente"))
@@ -192,15 +217,17 @@ Se queremos analisar os dados referentes aos votos, por exemplo, poderíamos red
 colunas <- list("NUMERO_CANDIDATO", "UF", "QTDE_VOTOS", "COD_MUN_IBGE")
 ```
 
-- PASSO 3: Acrescentamos o parâmetro columns_list a nossa função e indicamos a lista criada com o nome das colunas:
+- PASSO 3: Acrescentamos o parâmetro `columns_list` a nossa função e indicamos a lista criada com o nome das colunas:
 
 ```{r}
-vtpres_14_new <- get_votes(year="2014", position="Presidente", regional_aggregation="Municipio", columns_list=colunas)
+vtpres_14_new <- get_votes(year = "2014", position = "Presidente", regional_aggregation = "Municipio", columns_list = colunas)
 
 View(vtpres_14_new)
 ```
 
-Outra maneira de selecionar as colunas de interesse é através da função SUBSET. Para isto, basta:
+Repare que, em primeiro lugar, criamos um objeto chamado `colunas`, contendo os nomes das variáveis de nosso interesse. Após, nós passamos esse objeto `colunas` para o parâmetro `columns_list` dentro da função `get_votes`.
+
+Outra maneira de selecionar as colunas de interesse é através da função `subset`. Para isto, basta:
 
 ```{r}
 elpres_14_ <- subset(elpres_14_2,select= c("ANO_ELEICAO", "QT_VOTOS_BRANCOS", "QT_VOTOS_NULOS"))
@@ -208,9 +235,7 @@ elpres_14_ <- subset(elpres_14_2,select= c("ANO_ELEICAO", "QT_VOTOS_BRANCOS", "Q
 View(elpres_14_)
 ```
 
-Note que a função foi escrita na seguinte ordem: nome do novo data frame+subset+nome do antigo data frame+
-nome das colunas de interesse
-
+Note que a função foi escrita na seguinte ordem: nome do novo data frame+subset+nome do antigo data frame+nome das colunas de interesse
 
 ## 5. Analisando os resultados
 
