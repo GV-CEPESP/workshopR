@@ -9,7 +9,7 @@ cd output
 
 git rm -rf .
 
-cp -r ../public/ .
+cp -r ../public/* .
 
 git add -A
 
