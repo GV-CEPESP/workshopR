@@ -66,3 +66,5 @@ cand_2014_sp %>%
 
 ## 3. Contar
 
+Outra função para análise de dados 
+

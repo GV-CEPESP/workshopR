@@ -40,3 +40,5 @@ cand_2014 %>%
 Você pode substituir `DESCRICAO_SEXO` por outras variáeis: `DESCRICAO_COR_RACA`, `DESCRICAO_GRAU_INSTRUCAO`, `DESCRICAO_ESTADO_CIVIL`.
 
 ## 2. Mapas
+
+O princípio da construção de mapas no R é semelhante ao de gráficos.
