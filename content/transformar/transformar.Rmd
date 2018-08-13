@@ -6,7 +6,8 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = FALSE)
 ```
 
 Transformações de bancos de dados podem ser realizadas com funções presentes no pacote `dplyr`. Execute o código abaixo no seu R a fim de que possamos utilizá-lo nos exemplos desse tutorial.
