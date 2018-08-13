@@ -1,7 +1,7 @@
 ---
-title: "Guia ao CEPESPData"
+title: "1. Acessando o CEPESPData"
 author: "Rafael Coelho"
-date: "August 9, 2018"
+date: "2018-08-09"
 output: html_document
 ---
 
@@ -10,19 +10,20 @@ knitr::opts_chunk$set(echo = TRUE,
                       eval = FALSE)
 ```
 
-O __CepespR__ é um pacote criado para auxiliar o acesso dos usuários a API do CepespData. Por meio deste pacote é possível ter um acesso mais rápido e organizado aos dados do TSE a respeito das eleições ocorridas no Brasil entres os anos de 1998 e 2016. Pensando nisto, este script tem como seu objetivo principal mostrar exemplos de como o pacote CepespR funciona e, assim, facilitar a vida dos usuários na hora de utilizar o R. Seguindo a rotina de cógidos abaixo, o usuário ao final deste script terá as consultas realizadas salvas com sucesso em formato compatível com o excel(.csv).
+O __cepespR__ é um pacote criado para auxiliar o acesso dos usuários a API do CEPESPData. Por meio dessa ferramenta, é possível realizar requisições de maneira mais rápida e estruturada aos dados eleitorais presentes no nosso repositório. Por enquanto, o CEPESPData possui bancos referentes às eleições ocorridas no Brasil entre os anos de 1998 e 2016.
+
+Pensando nisto, este tutorial tem como objetivo principal demonstrar algumas funcionalidades básicas do __cepespR__, assim como alguns exemplos de requisições e análises que podem ser feitas em poucos minutos no R. Seguindo a rotina de códigos abaixo, o usuário, ao final deste tutorial, poderá ter as consultas salvas com sucesso em formato compatível com o Excel(.csv).
 
 ## 1. Instalando o CepespR
 
-Para instalar o pacote CepespR é preciso rodar o código abaixo apenas 
-uma vez (apenas em caso de troca de computador é preciso instalar novamente o pacote):
+Para instalar o pacote CepespR é preciso rodar o código abaixo apenas uma vez (apenas em caso de troca de computador é preciso instalar novamente o pacote):
 
 ```{r}
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("Cepesp-Fgv/cepesp-r") 
 ```
 
-Uma vez instalado o CepespR, é preciso "ativar" a library toda vez. Por isso SEMPRE que for utilizar o CepespData, é necessário rodar o código abaixo:
+Uma vez instalado o CepespR, o pacote é ativado mediante a função `library`. Lembre-se que é preciso executar essa função __toda vez que iniciar o R__, senão as funções do __cepespR__ não irão funcionar.
 
 ```{r}
 library(cepespR)
@@ -30,11 +31,11 @@ library(cepespR)
 
 ## 2. Explorando as funções do CepespR
 
-Uma vez carregado o pacote do CepespR, o usuário poderá fazer uso de 4 tipos de funções: `get_candidates`, `get_coalitions`, `get_votes` e `get_elections`. Cada função mostra ao usuário diferentes partes dos dados do TSE, retornando sempre ao final da consulta uma tabela com os detalhes das eleições. Veja abaixo o que cada função faz:
+Uma vez carregado o pacote do CepespR, o usuário poderá fazer uso de 4 tipos de funções: `get_candidates`, `get_coalitions`, `get_votes` e `get_elections`. Cada função devolve ao usuário diferentes partes dos dados do TSE, retornando sempre ao final da consulta uma tabela com os detalhes das eleições. Veja abaixo o que cada função faz:
 
 ### 2.1. Perfil dos candidatos (get_candidates)
 
-A função `get_candidates` retorna uma tabela com informações sobre características individuais dos candidatos. Com ela, é possível obter informações sobre __cor/raça__, __idade__, __gênero__, ou outra informação que diga respeito ao candidato. 
+A função `get_candidates` retorna uma tabela com informações sobre características individuais dos candidatos. Com ela, é possível obter, por exemplo, informações sobre __partido__, __cor/raça__, __idade__, __gênero__, ou outra informação que diga respeito ao candidato. 
 
 Para utilizá-la, você deve informar um __ano__ e uma __posição__. De modo geral, ela terá a seguinte estrutura:
 
@@ -42,19 +43,19 @@ Para utilizá-la, você deve informar um __ano__ e uma __posição__. De modo ge
 base_de_dados <- get_candidates(year = <Ano escolhido>, position = <cargo escolhido>).
 ```
 
-No exemplo abaixo, faremos uma consulta para os candidatos à __presidência__ durante as eleições de __2014__.
+No exemplo abaixo, faremos uma consulta para os candidatos à __presidência__ durante as eleições de __2014__. Repare que a função `get_candidates` salva a tabela no objeto `candpres_14`. Esse passo é importante uma vez que, caso seja de interesse utilizar essa tabela depois, faremos referência ao nome `candpres_14`.
 
 ```{r}
 candpres_14 <- get_candidates(year = 2014, position = "Presidente")
 ```
 
-Para visualizar os dados da tabela criada, usamos a função `View`.
+Para visualizar os dados da tabela criada, usamos a função `View` e dentro dos parênteses colocamos o nome da nossa tabela. No caso, utilizamos `candpres_14`.
 
 ```{r}
 View(candpres_14)
 ```
 
-Caso você queira, por exemplo, ver a distribuição de gênero entre todos os candidatos, podemos utilizar a função `table` da seguinte maneira:
+Uma das vantagem de se utilizar o R é que podemos criar tabelas de frequência com uma certa facilidade. Caso você queira, por exemplo, ver a distribuição de __gênero__ (DESCRICAO_SEXO) ou de __cor/raça__(DESCRICAO_COR_RACA) entre todos os candidatos, podemos utilizar a função `table` da seguinte maneira:
 
 ```{r}
 table(candpres_14$DESCRICAO_COR_RACA)
@@ -62,7 +63,7 @@ table(candpres_14$DESCRICAO_COR_RACA)
 table(candpres_14$DESCRICAO_SEXO)
 ```
 
-Caso deseje, por exemplo, a média de uma variável quantitativa, podemos utilizar a função `summary`.
+Outra função que pode ser executada para análises rápidas é a `summary`. Com ela, podemos obter a média, o desvio padrão e outros estatísticas descritivas de uma variável quantitativa. No exemplo abaixo, temos a __média de idade__ (IDADE_DATA_ELEICAO) dos candidatos.
 
 ```{r}
 summary(candpres_14$IDADE_DATA_ELEICAO)
@@ -72,7 +73,7 @@ summary(candpres_14$IDADE_DATA_ELEICAO)
 
 Ao invés de escrever os nomes das posições desejadas, uma alternativa é fornecer o código do cargo. Essa solução pode se demonstrar mais rápida com o tempo, uma vez que escrever os nomes é relativamente mais demorado e, caso digitado errado, levará a um erro durante a execução da função.
 
-Os códigos também estão disponíveis na página do [GitHub](https://github.com/Cepesp-Fgv/cepesp-rest/blob/master/EleicoesPorCargo_BETA.md).
+Os códigos estão disponíveis na nossa página do [GitHub](https://github.com/Cepesp-Fgv/cepesp-rest/blob/master/EleicoesPorCargo_BETA.md).
 
 Vamos ver um exemplo. Suponhamos que estamos interessados nas eleições para prefeito ocorridas em __2012__. O código do cargo para prefeito é __11__.  Sabendo disso, basta fornecer os valores desejados para a função e executá-la.
 
@@ -86,13 +87,23 @@ View(candpref_12)
 
 Caso o interesse seja pelas coligações realizadas por diferentes partidos, podemos utilizar a função `get_coalitions`.
 
-É importante ter em mente que o banco da dados sobre coligações fornecido pelo TSE apresenta diversas inconsistências. Por exemplo, estão presentes no banco tanto coligações que concorreram quanto aquelas que por algum motivo não puderam concorrer. Sabendo disso, indicamos que essas informações sejam utilizadas com cuidado. De modo geral, caso deseje obter informações sobre coligações, talvez seja mais interessante utilizar a função `get_elections`, como iremos demontrar mais para frente.
+É importante ter em mente que o banco da dados sobre coligações fornecido pelo TSE apresenta diversas inconsistências. Por exemplo, estão presentes no banco tanto coligações que concorreram quanto aquelas que por algum motivo não puderam concorrer. Sabendo disso, indicamos que essas informações sejam utilizadas com cuidado. De modo geral, caso deseje obter informações sobre coligações, talvez seja mais interessante utilizar a função `get_elections`, como iremos demonstrar mais para frente.
 
 O funcionamento de `get_coalitions` é similar ao de `get_candidates`. Basta fornecer uma __posição__ e um __ano__ para acessar as informações desejadas.
 
-```{r}
-colpres_14 <- get_coalitions(year = 2014, position = "Presidente")
+```{r, eval = FALSE}
+base_de_dados <- get_coalitions(year = <Ano escolhido>, position = <cargo escolhido>).
+```
 
+Por exemplo, caso seja de interesse as coligações realizadas para __prefeitura__ durante as eleições de __2016__, basta informar esses parâmetros e executar a função.
+
+```{r}
+colpres_14 <- get_coalitions(year = 2016, position = "Prefeito")
+```
+
+Novamente, para ter uma visão geral da tabela devolvida pela função, podemos utilizar a função `View`.
+
+```{r}
 View(colpres_14)
 ```
 
@@ -100,7 +111,9 @@ Suponhamos que agora estamos interessados nas coligações da eleição para __p
 
 ```{r}
 colpres_02 <- get_coalitions(year = 2002, position = "Presidente")
+```
 
+```{r}
 View(colpres_02)
 ```
 
@@ -184,7 +197,7 @@ View(eldepfed_2511)
 
 ### 3.2. Selecionando colunas
 
-Por padrão, as funções do CepespR retornam todas as colunas disponíveis, mas é possivel limitar o tamanho das tabelas para apenas a quantidade de variáveis desejadas.
+Por padrão, as funções do CepespR retornam todas as colunas disponíveis, mas é possível limitar o tamanho das tabelas para apenas a quantidade de variáveis desejadas.
 
 - PASSO 1: Primeiro visualizamos quais são as colunas padrões através da função `names`.
 
