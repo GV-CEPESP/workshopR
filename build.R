@@ -1,5 +1,3 @@
-library(magrittr)
-
 # 1. Implementar o Conteúdo -----------------------------------------------
 
 #Transfere os materias do repositório "materials" para o site
@@ -8,7 +6,7 @@ create_index <- function(){
   dir_file <- list.dirs("content", recursive = F)
   
   for(dir in dir_file){
-    file_name <- list.files(dir_file, pattern = "\\.Rmd$")
+    file_name <- list.files(dir, pattern = "\\.Rmd$")
     
     create_Rmd(file_name = file_name, dir_file = dir)
     }
