@@ -63,8 +63,3 @@ cand_2014_sp %>%
   select(SIGLA_PARTIDO, NOME_CANDIDATO, QTDE_VOTOS) %>% 
   arrange(desc(QTDE_VOTOS))
 ```
-
-## 3. Contar
-
-Outra função para análise de dados 
-
