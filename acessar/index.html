@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="pt-br">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>1. Acessando o CEPESPData - CEPESPData</title>
+    <meta name="generator" content="Hugo 0.22" />
+
+    
+    <meta name="description" content="Guia para acessar os dados eleitorais do CEPESPData">
+    
+    <link rel="canonical" href="../acessar/">
+    
+    <meta name="author" content="CEPESP-FGV">
+    
+
+    <meta property="og:url" content="/acessar/">
+    <meta property="og:title" content="CEPESPData">
+    <meta property="og:image" content="/logo_cepesp.jpg">
+    <meta name="apple-mobile-web-app-title" content="CEPESPData">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../fgv_favicon">
+    <link rel="icon" type="image/x-icon" href="../fgv_favicon">
+    <link rel="stylesheet" href="../stylesheets/icons.css">
+    <link rel="stylesheet" href="../stylesheets/application.css">
+    <link rel="stylesheet" href="../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../stylesheets/prism.css">
+
+    <link rel="stylesheet" href="../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-red palette-accent-teal">
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        1. Acessando o CEPESPData
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/cepesp" title="@cepesp on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/GV-CEPESP" title="@GV-CEPESP on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../logo_cepesp.jpg">
+        </div>
+      
+      <div class="name">
+        <strong>CEPESPData </strong>
+        
+          <br>
+          GV-CEPESP/workshopR
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/GV-CEPESP/workshopR/archive/master.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/GV-CEPESP/workshopR/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Acessando o CEPESPData" href="../workshop/">
+	
+	Acessando o CEPESPData
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">Contatos</span>
+        
+        <ul>
+          
+          <li>
+            <a href="https://twitter.com/cepesp" target="_blank" title="@cepesp on Twitter">
+              @cepesp no Twitter
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/GV-CEPESP" target="_blank" title="@cepesp no GitHub">
+              @cepesp no GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://facebook.com/cepesp.fgv" target="_blank" title="@cepesp on Facebook">
+              @cepesp no Facebook
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="mailto:cepesp@fgv.br" title="Nosso E-Email cepesp@fgv.br">
+              Envie um E-Mail
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>1. Acessando o CEPESPData </h1>
+
+			
+
+<p>O <strong>cepespR</strong> é um pacote criado para auxiliar o acesso dos usuários a API do CEPESPData. Por meio dessa ferramenta, é possível realizar requisições de maneira mais rápida e estruturada aos dados eleitorais presentes no nosso repositório. Por enquanto, o CEPESPData possui bancos referentes às eleições ocorridas no Brasil entre os anos de 1998 e 2016.</p>
+
+<p>Pensando nisto, este tutorial tem como objetivo principal demonstrar algumas funcionalidades básicas do <strong>cepespR</strong>, assim como alguns exemplos de requisições e análises que podem ser feitas em poucos minutos no R. Seguindo a rotina de códigos abaixo, o usuário, ao final deste tutorial, poderá ter as consultas salvas com sucesso em formato compatível com o Excel(.csv).</p>
+
+<h2 id="1-instalando-o-cepespr">1. Instalando o CepespR</h2>
+
+<p>Para instalar o pacote CepespR é preciso rodar o código abaixo apenas uma vez (apenas em caso de troca de computador é preciso instalar novamente o pacote):</p>
+
+<pre><code class="language-r">if (!require(&quot;devtools&quot;)) install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;Cepesp-Fgv/cepesp-r&quot;) 
+</code></pre>
+
+<p>Uma vez instalado o CepespR, o pacote é ativado mediante a função <code>library</code>. Lembre-se que é preciso executar essa função <strong>toda vez que iniciar o R</strong>, senão as funções do <strong>cepespR</strong> não irão funcionar.</p>
+
+<pre><code class="language-r">library(cepespR)
+</code></pre>
+
+<h2 id="2-explorando-as-funções-do-cepespr">2. Explorando as funções do CepespR</h2>
+
+<p>Uma vez carregado o pacote do CepespR, o usuário poderá fazer uso de 4 tipos de funções: <code>get_candidates</code>, <code>get_coalitions</code>, <code>get_votes</code> e <code>get_elections</code>. Cada função devolve ao usuário diferentes partes dos dados do TSE, retornando sempre ao final da consulta uma tabela com os detalhes das eleições. Veja abaixo o que cada função faz:</p>
+
+<h3 id="2-1-perfil-dos-candidatos-get-candidates">2.1. Perfil dos candidatos (get_candidates)</h3>
+
+<p>A função <code>get_candidates</code> retorna uma tabela com informações sobre características individuais dos candidatos. Com ela, é possível obter, por exemplo, informações sobre <strong>partido</strong>, <strong>cor/raça</strong>, <strong>idade</strong>, <strong>gênero</strong>, ou outra informação que diga respeito ao candidato.</p>
+
+<p>Para utilizá-la, você deve informar um <strong>ano</strong> e uma <strong>posição</strong>. De modo geral, ela terá a seguinte estrutura:</p>
+
+<pre><code class="language-r">base_de_dados &lt;- get_candidates(year = &lt;Ano escolhido&gt;, position = &lt;cargo escolhido&gt;).
+</code></pre>
+
+<p>No exemplo abaixo, faremos uma consulta para os candidatos à <strong>presidência</strong> durante as eleições de <strong>2014</strong>. Repare que a função <code>get_candidates</code> salva a tabela no objeto <code>candpres_14</code>. Esse passo é importante uma vez que, caso seja de interesse utilizar essa tabela depois, faremos referência ao nome <code>candpres_14</code>.</p>
+
+<pre><code class="language-r">candpres_14 &lt;- get_candidates(year = 2014, position = &quot;Presidente&quot;)
+</code></pre>
+
+<p>Para visualizar os dados da tabela criada, usamos a função <code>View</code> e dentro dos parênteses colocamos o nome da nossa tabela. No caso, utilizamos <code>candpres_14</code>.</p>
+
+<pre><code class="language-r">View(candpres_14)
+</code></pre>
+
+<p>Uma das vantagem de se utilizar o R é que podemos criar tabelas de frequência com uma certa facilidade. Caso você queira, por exemplo, ver a distribuição de <strong>gênero</strong> (DESCRICAO_SEXO) ou de <strong>cor/raça</strong>(DESCRICAO_COR_RACA) entre todos os candidatos, podemos utilizar a função <code>table</code> da seguinte maneira:</p>
+
+<pre><code class="language-r">table(candpres_14$DESCRICAO_COR_RACA)
+
+table(candpres_14$DESCRICAO_SEXO)
+</code></pre>
+
+<p>Outra função que pode ser executada para análises rápidas é a <code>summary</code>. Com ela, podemos obter a média, o desvio padrão e outros estatísticas descritivas de uma variável quantitativa. No exemplo abaixo, temos a <strong>média de idade</strong> (IDADE_DATA_ELEICAO) dos candidatos.</p>
+
+<pre><code class="language-r">summary(candpres_14$IDADE_DATA_ELEICAO)
+</code></pre>
+
+<h4 id="2-1-1-utilizando-códigos-ao-invés-de-nomes">2.1.1. Utilizando códigos ao invés de nomes</h4>
+
+<p>Ao invés de escrever os nomes das posições desejadas, uma alternativa é fornecer o código do cargo. Essa solução pode se demonstrar mais rápida com o tempo, uma vez que escrever os nomes é relativamente mais demorado e, caso digitado errado, levará a um erro durante a execução da função.</p>
+
+<p>Os códigos estão disponíveis na nossa página do <a href="https://github.com/Cepesp-Fgv/cepesp-rest/blob/master/EleicoesPorCargo_BETA.md">GitHub</a>.</p>
+
+<p>Vamos ver um exemplo. Suponhamos que estamos interessados nas eleições para prefeito ocorridas em <strong>2012</strong>. O código do cargo para prefeito é <strong>11</strong>.  Sabendo disso, basta fornecer os valores desejados para a função e executá-la.</p>
+
+<pre><code class="language-r">candpref_12 &lt;- get_candidates(year = 2012, position = 11)
+
+View(candpref_12)
+</code></pre>
+
+<h3 id="2-2-coligações-get-coalitions">2.2. Coligações (get_coalitions)</h3>
+
+<p>Caso o interesse seja pelas coligações realizadas por diferentes partidos, podemos utilizar a função <code>get_coalitions</code>.</p>
+
+<p>É importante ter em mente que o banco da dados sobre coligações fornecido pelo TSE apresenta diversas inconsistências. Por exemplo, estão presentes no banco tanto coligações que concorreram quanto aquelas que por algum motivo não puderam concorrer. Sabendo disso, indicamos que essas informações sejam utilizadas com cuidado. De modo geral, caso deseje obter informações sobre coligações, talvez seja mais interessante utilizar a função <code>get_elections</code>, como iremos demonstrar mais para frente.</p>
+
+<p>O funcionamento de <code>get_coalitions</code> é similar ao de <code>get_candidates</code>. Basta fornecer uma <strong>posição</strong> e um <strong>ano</strong> para acessar as informações desejadas.</p>
+
+<pre><code class="language-r">base_de_dados &lt;- get_coalitions(year = &lt;Ano escolhido&gt;, position = &lt;cargo escolhido&gt;).
+</code></pre>
+
+<p>Por exemplo, caso seja de interesse as coligações realizadas para <strong>prefeitura</strong> durante as eleições de <strong>2016</strong>, basta informar esses parâmetros e executar a função.</p>
+
+<pre><code class="language-r">colpres_14 &lt;- get_coalitions(year = 2016, position = &quot;Prefeito&quot;)
+</code></pre>
+
+<p>Novamente, para ter uma visão geral da tabela devolvida pela função, podemos utilizar a função <code>View</code>.</p>
+
+<pre><code class="language-r">View(colpres_14)
+</code></pre>
+
+<p>Suponhamos que agora estamos interessados nas coligações da eleição para <strong>presidente</strong> em <strong>2002</strong>. Neste caso, a função será escrita assim:</p>
+
+<pre><code class="language-r">colpres_02 &lt;- get_coalitions(year = 2002, position = &quot;Presidente&quot;)
+</code></pre>
+
+<pre><code class="language-r">View(colpres_02)
+</code></pre>
+
+<h3 id="2-3-votos-por-eleição-get-votes">2.3. Votos por eleição (get_votes)</h3>
+
+<p>Para obter detalhes a respeito do número de votos de cada candidato em uma eleição específica, a função <code>get_votos</code> é a indicada. Diferente das funções anteriores, essa função precisa de uma <strong>agregação regional</strong>. Nesse sentido, você precisa definir o nível de agregação dos votos (municípios, estados, nacional, etc). Caso essa opção não seja definida, <code>get_votes</code> retornará por padrão os votos agregados por municípios. Os diferentes níveis de agregação disponíveis podem ser consultados em: <a href="https://github.com/Cepesp-Fgv/cepesp-r">https://github.com/Cepesp-Fgv/cepesp-r</a></p>
+
+<p>No exemplo abaixo, podemos ver uma requisição para os votos para <strong>presidente</strong>, em <strong>2014</strong>, com agregação regional configurada para <strong>municípios</strong>.</p>
+
+<pre><code class="language-r">vtpres_14_mun &lt;- get_votes(year = 2014, position = &quot;Presidente&quot;, regional_aggregation = &quot;Municipio&quot;)
+
+View(vtpres_14_mun)
+</code></pre>
+
+<p>E se estivéssemos interessados em ver a agregação por Estado (unidade da federação)?</p>
+
+<pre><code class="language-r">vtpres_14_estad &lt;- get_votes(year = 2014, position = &quot;Presidente&quot;, regional_aggregation = &quot;Estado&quot;)
+
+View(vtpres_14_estad)
+</code></pre>
+
+<h3 id="2-4-resultado-de-eleições-por-cargo-get-elections">2.4. Resultado de eleições por cargo (get_elections)</h3>
+
+<p>Além das consultas disponíveis no TSE, é possível fazer uma consulta integrada as eleições. Esta consulta agrega informações de candidato, coligações e votos. Trata-se de um dos diferenciais do CEPESPData frente a outras fontes. A consulta ainda está em fase <strong>BETA</strong> e podem haver pontos de melhoria. Para obter detalhes a respeito de uma eleição especificando-se o cargo, use a função <code>get_elections</code>:</p>
+
+<pre><code class="language-r">elpres_14 &lt;- get_elections(year = 2014, position = &quot;Presidente&quot;, regional_aggregation = &quot;Municipio&quot;, political_aggregation = &quot;Candidato&quot;)
+
+View(elpres_14)
+</code></pre>
+
+<p>Esta função permite também consultar o resultado por diferentes agregações políticas: candidato, partido, coligação e consolidado da eleição. Cada uma delas agrega os votos e outras informações. Por exemplo, caso seja feita um requisição para agregação política <strong>partido</strong>, será retornado os votos obtidos e a coligação da qual o partido fez parte, além de outras informações.</p>
+
+<p>A agregação política <strong>consolidado da eleição</strong> possui informações um tanto quanto diferente das outras. Ela não retorna os votos de um candidato, partido ou coligação. Nela, você pode encontrar dados de <strong>comparecimento</strong>, <strong>votos válidos</strong> e _<em>votos brancos e nulos</em>._ Veja:</p>
+
+<pre><code class="language-r">elpres_14_2 &lt;- get_elections(year = 2014, position = &quot;Presidente&quot;, regional_aggregation = &quot;Estado&quot;, political_aggregation = &quot;Consolidado&quot;)
+
+View(elpres_14_2)
+</code></pre>
+
+<h2 id="3-filtrando-resultados">3. Filtrando resultados</h2>
+
+<p>Por padrão as funções do <code>cepespR</code> retornam todas colunas disponíveis como também todos os partidos, candidatos e Estados. A fim de reduzir o tamanho da tabela, é possível selecionar valores específicos para essas consultas e, assim, obter resultados menores e mais fáceis de se trabalhar.</p>
+
+<h3 id="3-1-selecionando-partidos-candidatos-e-estados">3.1. Selecionando partidos, candidatos e Estados</h3>
+
+<p>Para limitar os resultados a valores específicos (um estado, um partido ou a um candidato, por exemplo), basta acrescentar os parâmetros <code>state</code>, <code>party</code> ou <code>candidate_number</code> e alterá-los de acordo com o interesse.</p>
+
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Parâmetro</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Estado</td>
+<td>state</td>
+</tr>
+
+<tr>
+<td>Partido</td>
+<td>party</td>
+</tr>
+
+<tr>
+<td>Número do Candidato</td>
+<td>candidate_number</td>
+</tr>
+</tbody>
+</table>
+
+<p>Para mostrar apenas os resultados do Rio Grande do Sul (RS), por exemplo, acrescente o parâmetro <code>state</code>.</p>
+
+<pre><code class="language-r">elpres_14_RS &lt;- get_elections(year=2014, position=&quot;Presidente&quot;, regional_aggregation=&quot;Estado&quot;, political_aggregation=&quot;Partido&quot;, state=&quot;RS&quot;)
+
+View(elpres_14_RS)
+</code></pre>
+
+<p>Para mostrar apenas os resultados referentes ao PT (13), por exemplo, acrescente o parâmetro <code>party</code>.</p>
+
+<pre><code class="language-r">elpres_14_PT &lt;- get_elections(year=2014, position=&quot;Presidente&quot;, regional_aggregation=&quot;Estado&quot;, political_aggregation=&quot;Partido&quot;, party=&quot;13&quot;)
+
+View(elpres_14_PT)
+</code></pre>
+
+<p>Para mostrar apenas os resultados referentes ao candidato 2511, por exemplo, acrescente o parâmetro <code>candidate_number</code> Vamos escrever os parâmetros usando os códigos. Para o cargo de deputado federal o código é 6, para a agregação por UF. O código é 2 e para a agregação por candidato o código é 2</p>
+
+<pre><code class="language-r">eldepfed_2511 &lt;- get_elections(year=2014, position=6, regional_aggregation=2, political_aggregation=2, candidate_number=2511)
+
+View(eldepfed_2511)
+</code></pre>
+
+<h3 id="3-2-selecionando-colunas">3.2. Selecionando colunas</h3>
+
+<p>Por padrão, as funções do CepespR retornam todas as colunas disponíveis, mas é possível limitar o tamanho das tabelas para apenas a quantidade de variáveis desejadas.</p>
+
+<ul>
+<li>PASSO 1: Primeiro visualizamos quais são as colunas padrões através da função <code>names</code>.</li>
+</ul>
+
+<p>Existem duas maneiras de realizar esse procedimento. Em primeiro lugar, você pode acessar a nossa página do <a href="https://github.com/Cepesp-Fgv/cepesp-rest">GitHub</a> e selecionar a consulta desejada. Lá você poderá ver quais colunas são retornadas para cada requisição e escolher as pretendidas. Em segunda lugar, é possível realizar esse procedimento dentro do <code>R</code>, mediante a função <code>names</code>.</p>
+
+<p>Na função <code>get_candidates</code>, por exemplo, as colunas padrões são:</p>
+
+<pre><code class="language-r">names(get_candidates(year = 2014, position = &quot;Presidente&quot;))
+</code></pre>
+
+<p>Note que uma lista de 46 colunas apareceu no seu console. E para as outras funções?</p>
+
+<pre><code class="language-r">#Lista as colunas da função get_coalition
+names(get_coalitions(year = 2014, position = &quot;Presidente&quot;))
+
+#Lista as colunas da função get_votes
+names(get_votes(year = 2014, position = &quot;Presidente&quot;))
+
+#Lista as colunas da função get_elections
+names(get_elections(year = 2014, position = &quot;Presidente&quot;))
+</code></pre>
+
+<ul>
+<li>PASSO 2: Em segundo, criamos uma lista com o nome das colunas que desejamos:</li>
+</ul>
+
+<p>Se queremos analisar os dados referentes aos votos, por exemplo, poderíamos reduzir nosso data frame a seguintes colunas:</p>
+
+<pre><code class="language-r">colunas &lt;- list(&quot;NUMERO_CANDIDATO&quot;, &quot;UF&quot;, &quot;QTDE_VOTOS&quot;, &quot;COD_MUN_IBGE&quot;)
+</code></pre>
+
+<ul>
+<li>PASSO 3: Acrescentamos o parâmetro <code>columns_list</code> a nossa função e indicamos a lista criada com o nome das colunas:</li>
+</ul>
+
+<pre><code class="language-r">vtpres_14_new &lt;- get_votes(year = &quot;2014&quot;, position = &quot;Presidente&quot;, regional_aggregation = &quot;Municipio&quot;, columns_list = colunas)
+
+View(vtpres_14_new)
+</code></pre>
+
+<p>Repare que, em primeiro lugar, criamos um objeto chamado <code>colunas</code>, contendo os nomes das variáveis de nosso interesse. Após, nós passamos esse objeto <code>colunas</code> para o parâmetro <code>columns_list</code> dentro da função <code>get_votes</code>.</p>
+
+<p>Outra maneira de selecionar as colunas de interesse é através da função <code>subset</code>. Para isto, basta:</p>
+
+<pre><code class="language-r">elpres_14_ &lt;- subset(elpres_14_2,select= c(&quot;ANO_ELEICAO&quot;, &quot;QT_VOTOS_BRANCOS&quot;, &quot;QT_VOTOS_NULOS&quot;))
+
+View(elpres_14_)
+</code></pre>
+
+<p>Note que a função foi escrita na seguinte ordem: nome do novo data frame+subset+nome do antigo data frame+nome das colunas de interesse</p>
+
+<h2 id="5-analisando-os-resultados">5. Analisando os resultados</h2>
+
+<p>É possível fazer análises descritivas das variáveis contidas nos data frames. Por exemplo:</p>
+
+<p>Para variáveis qualitativas (categóricas), podemos usar a função TABLE. Esta função retorna a distribuição de frequência absoluta das categorias. Veja:</p>
+
+<p>Suponhamos que estamos interessados na quantidade de candidatas do sexo feminino para as eleições a prefeito de 2016.
+A função abaixo retorna a frequência absoluta de homens e mulheres:</p>
+
+<pre><code class="language-r">elpref_16 &lt;- get_elections(year=2016, position=&quot;Prefeito&quot;, regional_aggregation=&quot;Municipio&quot;, political_aggregation=&quot;Candidato&quot;)
+
+table(elpref_16$DESCRICAO_SEXO)
+</code></pre>
+
+<p>Note que a função foi escrita assim: table(nome do data frame$variável do data frame em que estou interessado). E para as eleições a deputado federal em 2014? Quantas mulheres se candidataram neste ano? Veja:</p>
+
+<pre><code class="language-r">eldepfed_14 &lt;- get_elections(year=2014, position=&quot;Deputado Federal&quot;, regional_aggregation=&quot;Estado&quot;, political_aggregation=&quot;Candidato&quot;)
+
+table(eldepfed_14$DESCRICAO_SEXO)
+</code></pre>
+
+<p>Para variáveis quantitativas (contínuas), podemos usar a função SUMMARY. Esta função retorna média, mediana, mínimo e máximo das variáveis. Veja:</p>
+
+<p>Suponhamos que estamos interessados na média das idades dos candidatos nas eleições a presidente de 2014. Veja:</p>
+
+<pre><code class="language-r">summary(elpres_14$IDADE_DATA_ELEICAO)
+</code></pre>
+
+<p>Note que a função <code>summary</code> funciona de maneira similar a <code>table</code>: <code>summary</code> (nome do data frame$variável do data frame em que estou interessado).</p>
+
+<h2 id="6-salvando-os-resultados">6. Salvando os resultados</h2>
+
+<p>Para salvar os data frames gerados neste script em formato .csv, basta usar a função abaixo:</p>
+
+<p>A função está organizada da seguinte maneira: <code>write.csv2</code>(nome do data frame que quero exportar, nome que quero dar ao meu arquivo .csv)</p>
+
+<pre><code class="language-r">write.csv2(elpres_14, &quot;eleicoes_presidente_2014.csv&quot;)
+</code></pre>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 Released under the MIT license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../" title="Primeiros Passos">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Primeiros Passos
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '\/';
+      var repo_id  = 'GV-CEPESP\/workshopR';
+    
+    </script>
+
+    <script src="../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="../javascripts/prism.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

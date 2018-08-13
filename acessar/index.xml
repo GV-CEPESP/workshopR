@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Acessars on CEPESPData</title>
+    <link>/acessar/</link>
+    <description>Recent content in Acessars on CEPESPData</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Thu, 09 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/acessar/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Acessando o CEPESPData</title>
+      <link>/acessar/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/acessar/</guid>
+      <description>O cepespR é um pacote criado para auxiliar o acesso dos usuários a API do CEPESPData. Por meio dessa ferramenta, é possível realizar requisições de maneira mais rápida e estruturada aos dados eleitorais presentes no nosso repositório. Por enquanto, o CEPESPData possui bancos referentes às eleições ocorridas no Brasil entre os anos de 1998 e 2016.
+Pensando nisto, este tutorial tem como objetivo principal demonstrar algumas funcionalidades básicas do cepespR, assim como alguns exemplos de requisições e análises que podem ser feitas em poucos minutos no R.</description>
+    </item>
+    
+  </channel>
+</rss>

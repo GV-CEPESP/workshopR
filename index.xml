@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CEPESPData</title>
+    <link>/</link>
+    <description>Recent content on CEPESPData</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Mon, 13 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2. Transformar</title>
+      <link>/transformar/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/transformar/</guid>
+      <description>Transformações de bancos de dados podem ser realizadas com funções presentes no pacote dplyr. Execute o código abaixo no seu R a fim de que possamos utilizá-lo nos exemplos desse tutorial.
+install.packages(&amp;quot;dplyr&amp;quot;)  ## Installing package into &#39;/home/travis/R/Library&#39; ## (as &#39;lib&#39; is unspecified)  ## also installing the dependencies &#39;fansi&#39;, &#39;utf8&#39;, &#39;bindr&#39;, &#39;cli&#39;, &#39;crayon&#39;, &#39;pillar&#39;, &#39;purrr&#39;, &#39;assertthat&#39;, &#39;bindrcpp&#39;, &#39;pkgconfig&#39;, &#39;tibble&#39;, &#39;tidyselect&#39;, &#39;plogr&#39;  Este tutorial não tem como objetivo ensinar a linguagem de programação R, mas fornecer um esqueleto para algumas análises simples, que podem ser feitas em alguns minutos.</description>
+    </item>
+    
+    <item>
+      <title>3. Visualizar</title>
+      <link>/visualizar/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/visualizar/</guid>
+      <description>install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;))  ## Installing packages into &#39;/home/travis/R/Library&#39; ## (as &#39;lib&#39; is unspecified)  ## also installing the dependencies &#39;colorspace&#39;, &#39;labeling&#39;, &#39;munsell&#39;, &#39;RColorBrewer&#39;, &#39;spData&#39;, &#39;e1071&#39;, &#39;gtable&#39;, &#39;lazyeval&#39;, &#39;plyr&#39;, &#39;reshape2&#39;, &#39;scales&#39;, &#39;viridisLite&#39;, &#39;DBI&#39;, &#39;units&#39;, &#39;classInt&#39;  ## Warning in install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;)): installation ## of package &#39;units&#39; had non-zero exit status  ## Warning in install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;)): installation ## of package &#39;sf&#39; had non-zero exit status  1. Gráficos 1.</description>
+    </item>
+    
+    <item>
+      <title>Primeiros Passos</title>
+      <link>/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/</guid>
+      <description>1. O que é o R? R é uma linguagem de programação muito utilizado para análise de dados. Com ele, podemos fazer gráficos, mapas, análises estatísticas das mais simples às mais sofisticadas. Uma das grandes vantagens do R é a comunidade bastante ativa que atualiza os pacotes e traz constante novas funcionalidades para nós usuários.
+2. Instalando o R e o RStudio Para instalar o R, clique aqui
+Para instalar o RStudio, interface de desenvolvimento (IDE) na qual realizamos nossas análises, clique aqui</description>
+    </item>
+    
+    <item>
+      <title>1. Acessando o CEPESPData</title>
+      <link>/acessar/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/acessar/</guid>
+      <description>O cepespR é um pacote criado para auxiliar o acesso dos usuários a API do CEPESPData. Por meio dessa ferramenta, é possível realizar requisições de maneira mais rápida e estruturada aos dados eleitorais presentes no nosso repositório. Por enquanto, o CEPESPData possui bancos referentes às eleições ocorridas no Brasil entre os anos de 1998 e 2016.
+Pensando nisto, este tutorial tem como objetivo principal demonstrar algumas funcionalidades básicas do cepespR, assim como alguns exemplos de requisições e análises que podem ser feitas em poucos minutos no R.</description>
+    </item>
+    
+  </channel>
+</rss>
