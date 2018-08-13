@@ -19,7 +19,8 @@
       
       <guid>/transformar/</guid>
       <description>Transformações de bancos de dados podem ser realizadas com funções presentes no pacote dplyr. Execute o código abaixo no seu R a fim de que possamos utilizá-lo nos exemplos desse tutorial.
-install.packages(&amp;quot;dplyr&amp;quot;)  ## Installing package into &#39;/home/travis/R/Library&#39; ## (as &#39;lib&#39; is unspecified)  ## also installing the dependencies &#39;fansi&#39;, &#39;utf8&#39;, &#39;bindr&#39;, &#39;cli&#39;, &#39;crayon&#39;, &#39;pillar&#39;, &#39;purrr&#39;, &#39;assertthat&#39;, &#39;bindrcpp&#39;, &#39;pkgconfig&#39;, &#39;tibble&#39;, &#39;tidyselect&#39;, &#39;plogr&#39;  Este tutorial não tem como objetivo ensinar a linguagem de programação R, mas fornecer um esqueleto para algumas análises simples, que podem ser feitas em alguns minutos.</description>
+install.packages(&amp;quot;dplyr&amp;quot;)  Este tutorial não tem como objetivo ensinar a linguagem de programação R, mas fornecer um esqueleto para algumas análises simples, que podem ser feitas em alguns minutos.
+1. Filtrar Ao realizar uma requisição no CEPESPData, a função escolhida irá retornar todas as observações condizentes com os parâmetros informados.</description>
     </item>
     
   </channel>

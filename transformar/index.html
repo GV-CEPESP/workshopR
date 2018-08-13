@@ -241,13 +241,6 @@
 <pre><code class="language-r">install.packages(&quot;dplyr&quot;)
 </code></pre>
 
-<pre><code>## Installing package into '/home/travis/R/Library'
-## (as 'lib' is unspecified)
-</code></pre>
-
-<pre><code>## also installing the dependencies 'fansi', 'utf8', 'bindr', 'cli', 'crayon', 'pillar', 'purrr', 'assertthat', 'bindrcpp', 'pkgconfig', 'tibble', 'tidyselect', 'plogr'
-</code></pre>
-
 <p>Este tutorial não tem como objetivo ensinar a linguagem de programação R, mas fornecer um <strong>esqueleto</strong> para algumas análises simples, que podem ser feitas em alguns minutos.</p>
 
 <h2 id="1-filtrar">1. Filtrar</h2>
@@ -255,32 +248,9 @@
 <p>Ao realizar uma requisição no CEPESPData, a função escolhida irá retornar todas as observações condizentes com os parâmetros informados. Contudo, nem sempre queremos todas as observações, mas apenas um conjunto específico. Por exemplo, talvez nós desejemos todos os candidatos do PSDB que concorreram no estado do Rio Grande do Sul (RS). Para isso, precisamos aplicar um filtro na nossa tabela, com a função <code>filter</code>.</p>
 
 <pre><code class="language-r">library(cepespR)
-</code></pre>
+library(dplyr)
 
-<pre><code>## Error in library(cepespR): there is no package called 'cepespR'
-</code></pre>
-
-<pre><code class="language-r">library(dplyr)
-</code></pre>
-
-<pre><code>## 
-## Attaching package: 'dplyr'
-</code></pre>
-
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-</code></pre>
-
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
-<pre><code class="language-r">cand_2014 &lt;- get_candidates(2014, 6)
-</code></pre>
-
-<pre><code>## Error in get_candidates(2014, 6): could not find function &quot;get_candidates&quot;
+cand_2014 &lt;- get_candidates(2014, 6)
 </code></pre>
 
 <p>Uma vez que você tenha feito a requisição do banco e salvado a tabela em um objeto (<code>cand_2014</code>), podemos aplicar a função. É importante notar que, ao comparar valores no R, utilizamos dois sinais de igual <code>==</code>.</p>
@@ -290,15 +260,9 @@
          SIGLA_PARTIDO == &quot;PSDB&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(lhs, parent, parent): object 'cand_2014' not found
-</code></pre>
-
 <p>Repare no uso do <code>%&gt;%</code> (leia-se <em>pipe</em>). O <em>pipe</em> nos permite concatenar a execução de diversas funções, de tal maneira que seja mais fácil realizar operações &ldquo;simultâneas&rdquo; em uma tabela.</p>
 
 <pre><code class="language-r">View(cand_psdb_rs)
-</code></pre>
-
-<pre><code>## Error in as.data.frame(x): object 'cand_psdb_rs' not found
 </code></pre>
 
 <h2 id="2-selecionar-e-ordenar">2. Selecionar e Ordenar</h2>
@@ -306,24 +270,12 @@
 <p>Também é possível selecionar algumas variáveis por meio da função <code>select</code> e ordená-las com a função <code>arrange</code>. Digamos, por exemplo, que você queira saber quais foram os deputados federais mais votados no estado de São Paulo. Em primeiro lugar, podemos fazer uma requisição no <code>get_votes</code>, utilizando o estado como agregação regional.</p>
 
 <pre><code class="language-r">library(cepespR)
-</code></pre>
-
-<pre><code>## Error in library(cepespR): there is no package called 'cepespR'
-</code></pre>
-
-<pre><code class="language-r">library(dplyr)
+library(dplyr)
 
 cand_2014 &lt;- get_elections(2014, 6, regional_aggregation = &quot;Estado&quot;)
-</code></pre>
 
-<pre><code>## Error in get_elections(2014, 6, regional_aggregation = &quot;Estado&quot;): could not find function &quot;get_elections&quot;
-</code></pre>
-
-<pre><code class="language-r">cand_2014_sp &lt;- cand_2014 %&gt;% 
+cand_2014_sp &lt;- cand_2014 %&gt;% 
   filter(UF == &quot;SP&quot;)
-</code></pre>
-
-<pre><code>## Error in eval(lhs, parent, parent): object 'cand_2014' not found
 </code></pre>
 
 <p>Uma vez com o nossa tabela filtrada, basta apenas ordenar os resultados. A fim de facilitar a leitura, podemos selecionar apenas as colunas relevantes. No caso, iremos utilizar a sigla do partido, o nome do candidato e a quantidade de votos.</p>
@@ -332,13 +284,6 @@ cand_2014 &lt;- get_elections(2014, 6, regional_aggregation = &quot;Estado&quot;
   select(SIGLA_PARTIDO, NOME_CANDIDATO, QTDE_VOTOS) %&gt;% 
   arrange(desc(QTDE_VOTOS))
 </code></pre>
-
-<pre><code>## Error in eval(lhs, parent, parent): object 'cand_2014_sp' not found
-</code></pre>
-
-<h2 id="3-contar">3. Contar</h2>
-
-<p>Outra função para análise de dados</p>
 
 
 			<aside class="copyright" role="note">

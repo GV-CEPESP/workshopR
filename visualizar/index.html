@@ -239,21 +239,6 @@
 <pre><code class="language-r">install.packages(c(&quot;ggplot2&quot;, &quot;sf&quot;, &quot;ggthemes&quot;))
 </code></pre>
 
-<pre><code>## Installing packages into '/home/travis/R/Library'
-## (as 'lib' is unspecified)
-</code></pre>
-
-<pre><code>## also installing the dependencies 'colorspace', 'labeling', 'munsell', 'RColorBrewer', 'spData', 'e1071', 'gtable', 'lazyeval', 'plyr', 'reshape2', 'scales', 'viridisLite', 'DBI', 'units', 'classInt'
-</code></pre>
-
-<pre><code>## Warning in install.packages(c(&quot;ggplot2&quot;, &quot;sf&quot;, &quot;ggthemes&quot;)): installation
-## of package 'units' had non-zero exit status
-</code></pre>
-
-<pre><code>## Warning in install.packages(c(&quot;ggplot2&quot;, &quot;sf&quot;, &quot;ggthemes&quot;)): installation
-## of package 'sf' had non-zero exit status
-</code></pre>
-
 <h2 id="1-gráficos">1. Gráficos</h2>
 
 <h3 id="1-1-gráfico-de-barras">1.1. Gráfico de Barras</h3>
@@ -261,18 +246,10 @@
 <p>Primeiro, precisamos fazer a requisição da nossa tabela.</p>
 
 <pre><code class="language-r">library(cepespR)
-</code></pre>
-
-<pre><code>## Error in library(cepespR): there is no package called 'cepespR'
-</code></pre>
-
-<pre><code class="language-r">library(dplyr)
+library(dplyr)
 library(ggplot2)
 
 cand_2014 &lt;- get_candidates(2014, 6)
-</code></pre>
-
-<pre><code>## Error in get_candidates(2014, 6): could not find function &quot;get_candidates&quot;
 </code></pre>
 
 <p>Em seguinda, iremos filtrar o nosso banco para utilizar a função <code>ggplot</code>. Dentro da função <code>ggplot</code>, repare no parâmetro <code>mapping</code> que recebe a função <code>aes</code>. Dentro de <code>aes</code>, o parâmetro <code>x</code> recebe o nome da variável que queremos utilizar para montar no nosso <strong>gráfico de barras</strong>.</p>
@@ -284,14 +261,7 @@ cand_2014 &lt;- get_candidates(2014, 6)
   theme_minimal()
 </code></pre>
 
-<pre><code>## Error in eval(lhs, parent, parent): object 'cand_2014' not found
-</code></pre>
-
 <p>Você pode substituir <code>DESCRICAO_SEXO</code> por outras variáeis: <code>DESCRICAO_COR_RACA</code>, <code>DESCRICAO_GRAU_INSTRUCAO</code>, <code>DESCRICAO_ESTADO_CIVIL</code>.</p>
-
-<h2 id="2-mapas">2. Mapas</h2>
-
-<p>O princípio da construção de mapas no R é semelhante ao de gráficos.</p>
 
 
 			<aside class="copyright" role="note">

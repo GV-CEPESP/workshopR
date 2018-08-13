@@ -18,7 +18,8 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/visualizar/</guid>
-      <description>install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;))  ## Installing packages into &#39;/home/travis/R/Library&#39; ## (as &#39;lib&#39; is unspecified)  ## also installing the dependencies &#39;colorspace&#39;, &#39;labeling&#39;, &#39;munsell&#39;, &#39;RColorBrewer&#39;, &#39;spData&#39;, &#39;e1071&#39;, &#39;gtable&#39;, &#39;lazyeval&#39;, &#39;plyr&#39;, &#39;reshape2&#39;, &#39;scales&#39;, &#39;viridisLite&#39;, &#39;DBI&#39;, &#39;units&#39;, &#39;classInt&#39;  ## Warning in install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;)): installation ## of package &#39;units&#39; had non-zero exit status  ## Warning in install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;)): installation ## of package &#39;sf&#39; had non-zero exit status  1. Gráficos 1.</description>
+      <description>install.packages(c(&amp;quot;ggplot2&amp;quot;, &amp;quot;sf&amp;quot;, &amp;quot;ggthemes&amp;quot;))  1. Gráficos 1.1. Gráfico de Barras Primeiro, precisamos fazer a requisição da nossa tabela.
+library(cepespR) library(dplyr) library(ggplot2) cand_2014 &amp;lt;- get_candidates(2014, 6)  Em seguinda, iremos filtrar o nosso banco para utilizar a função ggplot. Dentro da função ggplot, repare no parâmetro mapping que recebe a função aes. Dentro de aes, o parâmetro x recebe o nome da variável que queremos utilizar para montar no nosso gráfico de barras.</description>
     </item>
     
   </channel>
