@@ -1,0 +1,3 @@
+"0","cand_2014 <- get_elections(2014, 6, regional_aggregation = ""Estado"")
+"
+"2","[WARN] cepespdata function may return some invalid or incorrect results"
