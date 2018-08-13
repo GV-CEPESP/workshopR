@@ -4,8 +4,15 @@ library(magrittr)
 
 #Transfere os materias do repositório "materials" para o site
 
-dir_file <- list.dirs("content", recursive = F)
-file_name <- list.files(dir_file, pattern = "\\.Rmd$")
+create_index <- function(){
+  dir_file <- list.dirs("content", recursive = F)
+  
+  for(dir in dir_file){
+    file_name <- list.files(dir_file, pattern = "\\.Rmd$")
+    
+    create_Rmd(file_name = file_name, dir_file = dir)
+    }
+}
 
 create_Rmd <- function(file_name, dir_file){
   file <- stringr::str_remove(file_name, "\\.Rmd")
@@ -19,6 +26,8 @@ create_Rmd <- function(file_name, dir_file){
   post_name <- list.files(dir_file, pattern = paste0("^",file, ".md$"), full.names = T)
   system(sprintf("mv ./%s ./%s/index.md", post_name, dir_file))
 }
+
+create_index()
 
 # #Instala o Hugo (0.22) e constrói o site
 blogdown::install_hugo(version = "0.22", force = T)
