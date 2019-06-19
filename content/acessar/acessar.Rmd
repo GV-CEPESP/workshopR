@@ -157,7 +157,6 @@ elpres_14_2 <- get_elections(year = 2014, position = "Presidente", regional_aggr
 View(elpres_14_2)
 ```
 
-
 ### 2.5. Consultar bens de candidatos
 
 Para obter detalhes a respeito dos bens declarados pelos candidatos em uma eleição específica, a função `get_assets` é a indicada:
@@ -183,7 +182,6 @@ secret_SP <- get_secretaries(state = "SP", name = "João")
 View(secret_SP)
 ```
 
-
 ### 2.7. Consultar a lista de filiados
 
 Para obter informações sobre os filiados de um determinado partido, a função `get_filiates` é a indicada:
@@ -192,7 +190,6 @@ Para obter informações sobre os filiados de um determinado partido, a função
 fili_MG_PT <- get_filiates(state = "MG", party = "PT")
 View(fili_MG_PT)
 ```
-
 
 ## 3. Filtrando resultados
 
