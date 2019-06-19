@@ -157,6 +157,43 @@ elpres_14_2 <- get_elections(year = 2014, position = "Presidente", regional_aggr
 View(elpres_14_2)
 ```
 
+
+### 2.5. Consultar bens de candidatos
+
+Para obter detalhes a respeito dos bens declarados pelos candidatos em uma eleição específica, a função `get_assets` é a indicada:
+
+```{r}
+bens_14 <- get_assets(year=2014)
+View(bens_14)
+```
+
+Nesta função, o único parâmetro obrigatório é `year`, mas também é possível fazer uso de outros dois parâmetros opcionais, `state` e `columns_list`:
+
+```{r}
+bens_10_AC <- get_assets(year = 2010, state = "AC", columns_list = list('CODIGO_CARGO','NOME_CANDIDATO','CPF_CANDIDATO','VALOR_BEM'))
+View(bens_10_AC)
+```
+
+### 2.6. Consultar a lista de secretários estaduais
+
+Para obter detalhes sobre as características individuais dos secretrários estaduais entre 1995 e 2010, a função `get_secretaries` é a indicada:
+
+```{r}
+secret_SP <- get_secretaries(state = "SP", name = "João")
+View(secret_SP)
+```
+
+
+### 2.7. Consultar a lista de filiados
+
+Para obter informações sobre os filiados de um determinado partido, a função `get_filiates` é a indicada:
+
+```{r}
+fili_MG_PT <- get_filiates(state = "MG", party = "PT")
+View(fili_MG_PT)
+```
+
+
 ## 3. Filtrando resultados
 
 Por padrão as funções do `cepespR` retornam todas colunas disponíveis como também todos os partidos, candidatos e Estados. A fim de reduzir o tamanho da tabela, é possível selecionar valores específicos para essas consultas e, assim, obter resultados menores e mais fáceis de se trabalhar.
