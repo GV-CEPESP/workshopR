@@ -1,7 +1,7 @@
 ---
 title: "1. Acessando o CEPESPData"
-author: "Rafael Coelho"
-date: "2018-08-09"
+author: "Rafael Coelho/Rebeca Carvalho"
+date: "2019-06-19"
 output: html_document
 ---
 
@@ -284,7 +284,7 @@ View(elpres_14_)
 
 Note que a função foi escrita na seguinte ordem: nome do novo data frame+subset+nome do antigo data frame+nome das colunas de interesse
 
-## 5. Analisando os resultados
+## 4. Analisando os resultados
 
 É possível fazer análises descritivas das variáveis contidas nos data frames. Por exemplo: 
 
@@ -317,7 +317,7 @@ summary(elpres_14$IDADE_DATA_ELEICAO)
 
 Note que a função `summary` funciona de maneira similar a `table`: `summary` (nome do data frame$variável do data frame em que estou interessado).
 
-## 6. Salvando os resultados
+## 5. Salvando os resultados
 
 Para salvar os data frames gerados neste script em formato .csv, basta usar a função abaixo:
 
